@@ -236,6 +236,12 @@ RMW_INTERFACE_FN(rmw_node_get_graph_guard_condition,
   const rmw_guard_condition_t *, nullptr,
   1, ARG_TYPES(const rmw_node_t *))
 
+RMW_INTERFACE_FN(rmw_init_publisher_allocation,
+  rmw_ret_t, RMW_RET_ERROR, 3,
+  ARG_TYPES(const rosidl_message_type_support_t *,
+            const rosidl_message_bounds_t *,
+            rmw_publisher_allocation_t *))
+
 RMW_INTERFACE_FN(rmw_create_publisher,
   rmw_publisher_t *, nullptr,
   4, ARG_TYPES(
@@ -254,6 +260,12 @@ RMW_INTERFACE_FN(rmw_publish_serialized_message,
   rmw_ret_t, RMW_RET_ERROR,
   2, ARG_TYPES(const rmw_publisher_t *, const rmw_serialized_message_t *))
 
+RMW_INTERFACE_FN(rmw_get_serialized_message_size,
+  rmw_ret_t, RMW_RET_ERROR,
+  3, ARG_TYPES(const rosidl_message_bounds_t *,
+               const rosidl_message_type_support_t *,
+               size_t *))
+
 RMW_INTERFACE_FN(rmw_serialize,
   rmw_ret_t, RMW_RET_ERROR,
   3, ARG_TYPES(const void *, const rosidl_message_type_support_t *, rmw_serialized_message_t *))
@@ -261,6 +273,12 @@ RMW_INTERFACE_FN(rmw_serialize,
 RMW_INTERFACE_FN(rmw_deserialize,
   rmw_ret_t, RMW_RET_ERROR,
   3, ARG_TYPES(const rmw_serialized_message_t *, const rosidl_message_type_support_t *, void *))
+
+RMW_INTERFACE_FN(rmw_init_subscription_allocation,
+  rmw_ret_t, RMW_RET_ERROR, 3,
+  ARG_TYPES(const rosidl_message_type_support_t *,
+            const rosidl_message_bounds_t *,
+            rmw_subscription_allocation_t *))
 
 RMW_INTERFACE_FN(rmw_create_subscription,
   rmw_subscription_t *, nullptr,
@@ -402,12 +420,15 @@ void prefetch_symbols(void)
   GET_SYMBOL(rmw_create_node)
   GET_SYMBOL(rmw_destroy_node)
   GET_SYMBOL(rmw_node_get_graph_guard_condition)
+  GET_SYMBOL(rmw_init_publisher_allocation);
   GET_SYMBOL(rmw_create_publisher)
   GET_SYMBOL(rmw_destroy_publisher)
   GET_SYMBOL(rmw_publish)
   GET_SYMBOL(rmw_publish_serialized_message)
+  GET_SYMBOL(rmw_get_serialized_message_size)
   GET_SYMBOL(rmw_serialize)
   GET_SYMBOL(rmw_deserialize)
+  GET_SYMBOL(rmw_init_subscription_allocation)
   GET_SYMBOL(rmw_create_subscription)
   GET_SYMBOL(rmw_destroy_subscription)
   GET_SYMBOL(rmw_take)
